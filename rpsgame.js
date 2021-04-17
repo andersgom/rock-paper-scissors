@@ -19,6 +19,21 @@ Piedra && Tijeras = Ganas
 Papel && Piedra = Ganas
 Tijeras && Papel = Ganas
 
+
+playerSelection === "rock" && computerSelection === "paper" ||
+playerSelection === "paper" && computerSelection === "scissors" ||
+playerSelection === "scissors" && computerSelection === "rock"
+            return youLose;
+playerSelection === "rock" && computerSelection === "scissors" ||
+playerSelection === "paper" && computerSelection === "rock" ||
+playerSelection === "scisors" && computerSelection === "paper"
+            return youWin;
+playerSelection === computerSelection
+            return tieGame;
+else:
+            return "The options are Rock, Paper and Scissors";
+
+
 */
 
 function computerPlay(){
@@ -27,28 +42,23 @@ function computerPlay(){
     return choices[random];
 }
 
-/*
+
 function playRound(playerSelection, computerSelection) {
 
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
-    let youLose = `You lose! "${computerSelection}" beats "${playerSelection}".`;
-    let youWin = `You win! "${playerSelection}" beats "${computerSelection}".`;
-    let tieGame = "Tie game!"
 
-    switch(playerSelection, computerSelection){
-        case playerSelection === "rock" && computerSelection === "paper":
-        case playerSelection === "paper" && computerSelection === "scissors":
-        case playerSelection === "scissors" && computerSelection === "rock":
-            return youLose;
-        case playerSelection === "rock" && computerSelection === "scissors":
-        case playerSelection === "paper" && computerSelection === "rock":
-        case playerSelection === "scisors" && computerSelection === "paper":
-            return youWin;
-        case playerSelection === computerSelection:
-            return tieGame;
-        default:
-            return "The options are Rock, Paper and Scissors";
+    if (playerSelection === "rock" && computerSelection === "paper" ||
+    playerSelection === "paper" && computerSelection === "scissors" ||
+    playerSelection === "scissors" && computerSelection === "rock") {
+        return `You lose! ${computerSelection} beats ${playerSelection}.`;
+    } else if (playerSelection === "rock" && computerSelection === "scissors" ||
+    playerSelection === "paper" && computerSelection === "rock" ||
+    playerSelection === "scissors" && computerSelection === "paper") {
+        return `You win! ${playerSelection} beats ${computerSelection}.`;
+    } else if (playerSelection === computerSelection) {
+        return "Tie game!";
+    } else {
+        return "The options are Rock, Paper and Scissors"
     }
 }
-*/
