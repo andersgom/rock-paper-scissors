@@ -1,38 +1,35 @@
 /* 
 --Info--
-función: playRound
-parámetros: playerSelection computerSelection
 
--playerSelection toma la elección del jugador y
-lo pasa a minusculas.
--computerSelection toma el resultado de computerPlay.
+-Juego de 5 rondas.
+-Usa loop o llama playRound 5 veces.
+-console.log() los resultados.
+-Usa prompt() en playerSelection.
 
--playRound compara las elecciones y devuelve un resultado.
+Función counter, con el parámetro result.
+-Un array almacena los youWin y youLose.
+    if youWin --> Se añade youWin al array
+    if else youLose --> Se añade youLose al array
+    else --> No se añade nada
 
-Si ps = cs hay empate
+-Aprovecha esto:
+  let arr = ['a', 'a', 'b', 'g', 'a', 'e'];
+      let count = arr.filter(elem => elem === 'a').length;
+      console.log(count);
+Mira si puedes hacer que cuente ambos (winCount - loseCount)?
 
-Piedra && Papel = Pierdes
-Papel && Tijeras = Pierdes
-Tijeras && Piedra = Pierdes
+-Y haces console.log del contador.
 
-Piedra && Tijeras = Ganas
-Papel && Piedra = Ganas
-Tijeras && Papel = Ganas
+game();
+
+while rounds < 5
+playerSelection = prompt("Choose your weapon:","")
+result = playRound()
+counter(result)
+rounds++
 
 
-playerSelection === "rock" && computerSelection === "paper" ||
-playerSelection === "paper" && computerSelection === "scissors" ||
-playerSelection === "scissors" && computerSelection === "rock"
-            return youLose;
-playerSelection === "rock" && computerSelection === "scissors" ||
-playerSelection === "paper" && computerSelection === "rock" ||
-playerSelection === "scisors" && computerSelection === "paper"
-            return youWin;
-playerSelection === computerSelection
-            return tieGame;
-else:
-            return "The options are Rock, Paper and Scissors";
-
+}
 
 */
 
@@ -42,23 +39,26 @@ function computerPlay(){
     return choices[random];
 }
 
-
 function playRound(playerSelection, computerSelection) {
 
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
 
+    let youWin = `You win! ${playerSelection} beats ${computerSelection}.`;
+    let youLose = `You lose! ${computerSelection} beats ${playerSelection}.`;
+
     if (playerSelection === "rock" && computerSelection === "paper" ||
     playerSelection === "paper" && computerSelection === "scissors" ||
     playerSelection === "scissors" && computerSelection === "rock") {
-        return `You lose! ${computerSelection} beats ${playerSelection}.`;
+        return youLose;
     } else if (playerSelection === "rock" && computerSelection === "scissors" ||
     playerSelection === "paper" && computerSelection === "rock" ||
     playerSelection === "scissors" && computerSelection === "paper") {
-        return `You win! ${playerSelection} beats ${computerSelection}.`;
+        return youWin;
     } else if (playerSelection === computerSelection) {
         return "Tie game!";
     } else {
         return "The options are Rock, Paper and Scissors"
     }
 }
+
