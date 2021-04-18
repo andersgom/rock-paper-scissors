@@ -2,36 +2,36 @@
 --Info--
 
 -Juego de 5 rondas.
--Usa loop o llama playRound 5 veces.
+-Llama playRound cada vez.
 -console.log() los resultados.
 -Usa prompt() en playerSelection.
 
 Función counter, con el parámetro result.
--Un array almacena los youWin y youLose.
-    if youWin --> Se añade youWin al array
-    if else youLose --> Se añade youLose al array
-    else --> No se añade nada
+-Array almacena los youWin y youLose:
 
--Aprovecha esto:
-  let arr = ['a', 'a', 'b', 'g', 'a', 'e'];
-      let count = arr.filter(elem => elem === 'a').length;
-      console.log(count);
-Mira si puedes hacer que cuente ambos (winCount - loseCount)?
+  let counter = ['win', 'lose'];
+      let winCount = counter.filter(elem => elem === 'win').length;
+      let loseCount = counter.filter(elem => elem === 'lose').length;
+      console.log(winCount + " - " + loseCount);
 
--Y haces console.log del contador.
 
 game();
 
 while rounds < 5
 playerSelection = prompt("Choose your weapon:","")
-result = playRound()
-counter(result)
+playRound()
+addPoint()
 rounds++
 
+addPoint(result);
 
 }
-
+      let winCount = counter.filter(elem => elem === 'win').length;
+      let loseCount = counter.filter(elem => elem === 'lose').length;
 */
+
+let counter = [];
+
 
 function computerPlay(){
     let choices = ["Rock","Paper","Scissors"];
@@ -50,15 +50,55 @@ function playRound(playerSelection, computerSelection) {
     if (playerSelection === "rock" && computerSelection === "paper" ||
     playerSelection === "paper" && computerSelection === "scissors" ||
     playerSelection === "scissors" && computerSelection === "rock") {
-        return youLose;
+        return addPoint('lose') + " " + youLose;
     } else if (playerSelection === "rock" && computerSelection === "scissors" ||
     playerSelection === "paper" && computerSelection === "rock" ||
     playerSelection === "scissors" && computerSelection === "paper") {
-        return youWin;
+        return addPoint('win') + " " + youWin;
     } else if (playerSelection === computerSelection) {
-        return "Tie game!";
+        return addPoint('') + " Tie game!";
     } else {
-        return "The options are Rock, Paper and Scissors"
+        return addPoint('') + " The options are Rock, Paper and Scissors"
     }
 }
 
+function addPoint(result) {
+
+    if (result === 'win') {
+        counter.push('win')
+        let winCount = counter.filter(elem => elem === 'win').length;
+        let loseCount = counter.filter(elem => elem === 'lose').length;
+        return winCount + " - " + loseCount;
+    } else if (result === 'lose') {
+        counter.push('lose')
+        let winCount = counter.filter(elem => elem === 'win').length;
+        let loseCount = counter.filter(elem => elem === 'lose').length;
+        return winCount + " - " + loseCount;
+    } else {
+        let winCount = counter.filter(elem => elem === 'win').length;
+        let loseCount = counter.filter(elem => elem === 'lose').length;
+        return winCount + " - " + loseCount;
+    }
+}
+
+function yourTurn() {
+    let playerSelection = prompt("Choose your weapon:","");
+    return playerSelection;
+}
+
+function game() {
+
+    let rounds = 0;
+
+    while (rounds<5) {
+        console.log(playRound(yourTurn(), computerPlay()));
+        rounds++
+    }
+
+    if (rounds == 5) {
+        let winCount = counter.filter(elem => elem === 'win').length;
+        let loseCount = counter.filter(elem => elem === 'lose').length;
+        console.log("Final results: " + winCount + " - " + loseCount);
+        counter.length = 0;
+    }
+}
