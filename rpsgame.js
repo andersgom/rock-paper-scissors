@@ -1,33 +1,6 @@
 /* 
 --Info--
 
--Juego de 5 rondas.
--Llama playRound cada vez.
--console.log() los resultados.
--Usa prompt() en playerSelection.
-
-Función counter, con el parámetro result.
--Array almacena los youWin y youLose:
-
-  let counter = ['win', 'lose'];
-      let winCount = counter.filter(elem => elem === 'win').length;
-      let loseCount = counter.filter(elem => elem === 'lose').length;
-      console.log(winCount + " - " + loseCount);
-
-
-game();
-
-while rounds < 5
-playerSelection = prompt("Choose your weapon:","")
-playRound()
-addPoint()
-rounds++
-
-addPoint(result);
-
-}
-      let winCount = counter.filter(elem => elem === 'win').length;
-      let loseCount = counter.filter(elem => elem === 'lose').length;
 */
 
 let counter = [];
